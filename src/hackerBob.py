@@ -1,16 +1,22 @@
-thePassword = str(1234)
+user_input = input('Please enter a string: ')
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+password = 'abc'
+ciphered = ""
+rotate_by = 13
 
-def crack_password(password):
-    passwd = list(thePassword)
-    for i in range(0, 10):
-        for j in range(0,10):
-            for k in range(0,10):
-                for l in range(0,10):
-                    if str(i) == passwd[0] and str(j) == passwd[1] and str(k) == passwd[2] and str(l) == passwd[3]:
-                        mylist=[str(i),str(j),str(k),str(l)]
-                        code = "".join(mylist)
-                        #print mylist
-                        #print code
-    print("Four Digit Password: {}".format(code))
+for char in user_input:
+    index_in_alphabet = alphabet.index(char)
+    new_index = index_in_alphabet + rotate_by
+    if new_index >= len(alphabet):
+        new_index = new_index - len(alphabet)
+    ciphered += alphabet[new_index]
+    #print(ciphered) #can comment out
 
-crack_password(1234)
+
+if ciphered == password:
+    print('You got it right')
+else:
+    print('Wrong sucka')
+
+
+
